@@ -16,5 +16,10 @@ namespace CIS359_StudentScoringApp
         {
             InitializeComponent();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
