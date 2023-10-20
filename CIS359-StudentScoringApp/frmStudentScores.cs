@@ -26,5 +26,10 @@ namespace CIS359_StudentScoringApp
         {
 
         }
+
+        private void frmStudentScores_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

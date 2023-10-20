@@ -94,6 +94,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(259, 163);
             this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
@@ -190,6 +191,7 @@
             this.Name = "frmStudentScores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Scores";
+            this.Load += new System.EventHandler(this.frmStudentScores_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
