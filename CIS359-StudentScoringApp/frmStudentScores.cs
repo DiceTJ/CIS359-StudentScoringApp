@@ -106,5 +106,40 @@ namespace CIS359_StudentScoringApp
                 LoadStudentListBox();
             }
         }
+
+        private void btnAddNew_Click(object sender, EventArgs e)
+        {
+            Form addForm = new frmAddNewStudent();
+            DialogResult result = addForm.ShowDialog();
+
+            if (result == DialogResult.OK) 
+            {
+                studentScores.Add(addForm.Tag.ToString());
+                int lastIndex = studentScores.Count - 1;
+                LoadStudentListBox(lastIndex);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (studentScores.Count > 0) 
+            {
+                int SelectedIndex = lstStudents.SelectedIndex;
+                string student = studentScores[SelectedIndex].ToString();
+
+                Form updateForm = new frmUpdateStudent();
+                updateForm.Tag = student;
+
+                DialogResult result = updateForm.ShowDialog();
+
+                if (result == DialogResult.OK) 
+                {
+                    studentScores.RemoveAt(SelectedIndex);
+                    studentScores.Insert(SelectedIndex, updateForm.Tag?.ToString());
+
+                    LoadStudentListBox(SelectedIndex);
+                }
+            }
+        }
     }
 }
