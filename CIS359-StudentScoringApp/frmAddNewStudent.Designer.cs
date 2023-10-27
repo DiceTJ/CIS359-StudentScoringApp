@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtScore = new System.Windows.Forms.TextBox();
             this.lblScores = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -70,12 +70,12 @@
             this.label2.Text = "Score:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox1
+            // txtScore
             // 
-            this.textBox1.Location = new System.Drawing.Point(59, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 23);
-            this.textBox1.TabIndex = 3;
+            this.txtScore.Location = new System.Drawing.Point(59, 61);
+            this.txtScore.Name = "txtScore";
+            this.txtScore.Size = new System.Drawing.Size(164, 23);
+            this.txtScore.TabIndex = 3;
             // 
             // lblScores
             // 
@@ -107,6 +107,7 @@
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "&Add Score";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnClear
             // 
@@ -153,7 +154,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lblScores);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtScore);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
@@ -172,7 +173,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtScore;
         private System.Windows.Forms.Label lblScores;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnAdd;

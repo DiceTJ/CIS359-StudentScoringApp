@@ -21,5 +21,28 @@ namespace CIS359_StudentScoringApp
         {
 
         }
+
+        List<int> scoreList = new List<int>();
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (IsValidScore())
+            {
+                int score = Convert.ToInt32(txtScore.Text);
+                scoreList.Add(score);
+                DisplayScores();
+                txtScore.Focus();
+            }
+        }
+
+        private void DisplayScores()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (int score in scoreList) 
+            {
+                sb.Append($"{score} ");
+            }
+            lblScores.Text = sb.ToString();
+        }
     }
 }
