@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
             this.lblScores = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.scoresList = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -89,14 +89,15 @@
             this.lblScores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblScores.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox2
+            // scoresList
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(64, 113);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(254, 23);
-            this.textBox2.TabIndex = 5;
+            this.scoresList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scoresList.Location = new System.Drawing.Point(64, 113);
+            this.scoresList.Name = "scoresList";
+            this.scoresList.ReadOnly = true;
+            this.scoresList.Size = new System.Drawing.Size(254, 23);
+            this.scoresList.TabIndex = 5;
+            this.scoresList.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // btnAdd
             // 
@@ -118,6 +119,7 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear &Scores";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnCancel
             // 
@@ -129,6 +131,7 @@
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
@@ -140,6 +143,7 @@
             this.btnOK.TabIndex = 9;
             this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // frmAddNewStudent
             // 
@@ -152,7 +156,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.scoresList);
             this.Controls.Add(this.lblScores);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.label2);
@@ -175,7 +179,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtScore;
         private System.Windows.Forms.Label lblScores;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox scoresList;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnCancel;
