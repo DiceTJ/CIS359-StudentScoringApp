@@ -140,6 +140,9 @@ namespace CIS359_StudentScoringApp
             return errorMsg;
         }
 
+        private void frmAddNewStudent_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
