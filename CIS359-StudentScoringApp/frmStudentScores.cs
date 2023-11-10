@@ -27,12 +27,12 @@ namespace CIS359_StudentScoringApp
 
         }
 
-        public List<string> studentScores = new List<string>();
+        public List<Student> students = new List<Student>();
         private void frmStudentScores_Load(object sender, EventArgs e)
         {
-            studentScores.Add("Bill Chipman|92|95|85");
-            studentScores.Add("Jane Doe|98|100|89");
-            studentScores.Add("John Smith|85|79|90");
+            students.Add(new Student("Bill Chipman|92|95|85"));
+            students.Add(new Student("Jane Doe|98|100|89"));
+            students.Add(new Student("John Smith|85|79|90"));
             LoadStudentListBox();
         }
 
@@ -40,7 +40,7 @@ namespace CIS359_StudentScoringApp
         {
             lstStudents.Items.Clear();
 
-            foreach (string s in studentScores) 
+            foreach (Student s in students) 
             {
                 lstStudents.Items.Add(s);
 
@@ -69,27 +69,10 @@ namespace CIS359_StudentScoringApp
         {
             if (lstStudents.SelectedIndex != -1)
             {
-                string student = studentScores[lstStudents.SelectedIndex].ToString();
-                string[] scores = student.Split('|');
-
-                int total = 0;
-                for (int i = 1; i < scores.Length; i++)
-                {
-                    total += Convert.ToInt32(scores[i]);
-                }
-                int count = scores.Length - 1;
-
-                int average = 0;
-
-                if (count > 0) 
-                {
-                    average= total / count;
-
-                }
-
-                lblScoreTotal.Text = total.ToString();
-                lblScoreCount.Text = count.ToString();
-                lblAverage.Text = average.ToString();
+                Student student = (Student)lstStudents.SelectedItem;
+                lblScoreTotal.Text = student.ScoreTotal.ToString();
+                lblScoreCount.Text = student.ScoreCount.ToString();
+                lblAverage.Text = student.ScoreAverage.ToString();
             }
         }
 
@@ -100,9 +83,9 @@ namespace CIS359_StudentScoringApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (studentScores.Count > 0) 
+            if (students.Count > 0) 
             {
-                studentScores.RemoveAt(lstStudents.SelectedIndex);
+                students.RemoveAt(lstStudents.SelectedIndex);
                 LoadStudentListBox();
             }
         }
@@ -114,18 +97,17 @@ namespace CIS359_StudentScoringApp
 
             if (result == DialogResult.OK) 
             {
-                studentScores.Add(addForm.Tag.ToString());
-                int lastIndex = studentScores.Count - 1;
-                LoadStudentListBox(lastIndex);
+                students.Add((Student)addForm.Tag);
+                LoadStudentListBox();
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (studentScores.Count > 0) 
+            if (students.Count > 0) 
             {
-                int SelectedIndex = lstStudents.SelectedIndex;
-                string student = studentScores[SelectedIndex].ToString();
+                Student student = (Student)lstStudents.SelectedItem;
+                
 
                 Form updateForm = new frmUpdateStudent();
                 updateForm.Tag = student;
@@ -134,10 +116,10 @@ namespace CIS359_StudentScoringApp
 
                 if (result == DialogResult.OK) 
                 {
-                    studentScores.RemoveAt(SelectedIndex);
-                    studentScores.Insert(SelectedIndex, updateForm.Tag?.ToString());
+                    students.RemoveAt(lstStudents.SelectedIndex);
+                    students.Insert(lstStudents.SelectedIndex, (Student)updateForm.Tag);
 
-                    LoadStudentListBox(SelectedIndex);
+                    LoadStudentListBox();
                 }
             }
         }
