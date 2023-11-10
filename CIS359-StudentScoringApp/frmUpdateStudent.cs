@@ -17,38 +17,31 @@ namespace CIS359_StudentScoringApp
             InitializeComponent();
         }
 
-        List<int> scoresList = new List<int>();
+        Student student = new Student();
 
         private void frmUpdateStudent_Load(object sender, EventArgs e)
         {
-            string student = Tag?.ToString() ?? "";
-            string[] nameAndScores = student.Split('|');
+            Student s = (Student)Tag;
+            student = (Student)s.Clone();
 
-            foreach (string s in nameAndScores)
-            {
-                bool isScore = Int32.TryParse(s, out int score);
-                if (isScore)
-                {
-                    scoresList.Add(score);
-                }
-                else
-                {
-                    lblName.Text = s;
-                }
-            }
+            lblName.Text = student.Name;
             DisplayScores();
+            if(student.Scores.Count > 1)
+            {
+                lstStudentScores.SelectedIndex = 0;
+            }
         }
 
         private void DisplayScores()
         {
             lstStudentScores.Items.Clear();
-            if (scoresList.Count > 0)
+            if (student.Scores.Count > 0)
             {
-                foreach (int score in scoresList)
+                foreach (int i in student.Scores)
                 {
-                    lstStudentScores.Items.Add(score);
+                    lstStudentScores.Items.Add(i);
                 }
-                lstStudentScores.SelectedIndex = 0;
+                
 
             }
         }
@@ -61,7 +54,7 @@ namespace CIS359_StudentScoringApp
             if (result == DialogResult.OK)
             {
                 int score = (int)addForm.Tag;
-                scoresList.Add(score);
+                student.Scores.Add(score);
                 DisplayScores();
             }
         }
@@ -82,8 +75,8 @@ namespace CIS359_StudentScoringApp
                 if (result == DialogResult.OK)
                 {
                     int score = (int)updateForm.Tag;
-                    scoresList.RemoveAt(selectedIndex);
-                    scoresList.Insert(selectedIndex, score);
+                    student.Scores.RemoveAt(selectedIndex);
+                    student.Scores.Insert(selectedIndex, score);
                     DisplayScores();
                 }
             }
@@ -91,28 +84,23 @@ namespace CIS359_StudentScoringApp
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (scoresList.Count > 0)
+            if (student.Scores.Count > 0)
             {
-                scoresList.RemoveAt(lstStudentScores.SelectedIndex);
+                student.Scores.RemoveAt(lstStudentScores.SelectedIndex);
                 DisplayScores();
             }
         }
 
         private void btnClearScores_Click(object sender, EventArgs e)
         {
-            scoresList.Clear();
+            student.Scores.Clear();
             lstStudentScores.Items.Clear();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            string studentScores = lblName.Text;
-            foreach (int score in scoresList)
-            {
-                studentScores += $"|{score}";
-            }
-
-            Tag = studentScores;
+           
+            Tag = student;
             DialogResult = DialogResult.OK;
         }
 
