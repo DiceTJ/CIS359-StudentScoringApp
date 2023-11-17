@@ -24,7 +24,7 @@ namespace CIS359_StudentScoringApp
                 students.Add(student);
             }
             
-            
+            textIn.Close();
             return students;
         }
 
@@ -34,6 +34,7 @@ namespace CIS359_StudentScoringApp
         
             foreach (Student student in students)
                 textOut.WriteLine(student.ToString());
+            textOut.Close();
         }
 
     }
